@@ -880,8 +880,6 @@ img {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  margin-left: 1.25rem;
-  flex-shrink: 0;
 }
 
 .lang-toggle-sep {
@@ -924,8 +922,6 @@ img {
   line-height: 1;
   display: flex;
   align-items: center;
-  margin-left: 0.5rem;
-  flex-shrink: 0;
 }
 
 .theme-btn:hover {
@@ -943,11 +939,22 @@ html[data-theme="light"] .theme-icon-moon { display: block; }
 
 /* ===== Footer ===== */
 footer {
-  text-align: center;
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem;
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+.footer-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 footer a {
