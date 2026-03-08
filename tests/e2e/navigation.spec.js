@@ -32,20 +32,36 @@ test.describe('All pages load without errors', () => {
 });
 
 test.describe('Navigation links', () => {
+  /**
+   * On mobile viewports (≤768 px) the nav links are hidden behind the
+   * hamburger menu.  Open it first so the links become visible before
+   * attempting to click them.
+   */
+  async function openNavIfMobile(page) {
+    const hamburger = page.locator('.hamburger');
+    if (await hamburger.isVisible()) {
+      await hamburger.click();
+      await expect(page.locator('.nav-links')).toHaveClass(/open/);
+    }
+  }
+
   test('clicking "About" from home navigates to about.html', async ({ page }) => {
     await page.goto('/index.html');
+    await openNavIfMobile(page);
     await page.click('.nav-links a[href="about.html"]');
     await expect(page).toHaveURL(/about\.html/);
   });
 
   test('clicking "Projects" from home navigates to projects.html', async ({ page }) => {
     await page.goto('/index.html');
+    await openNavIfMobile(page);
     await page.click('.nav-links a[href="projects.html"]');
     await expect(page).toHaveURL(/projects\.html/);
   });
 
   test('clicking "Contact" from home navigates to contact.html', async ({ page }) => {
     await page.goto('/index.html');
+    await openNavIfMobile(page);
     await page.click('.nav-links a[href="contact.html"]');
     await expect(page).toHaveURL(/contact\.html/);
   });
