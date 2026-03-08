@@ -23,7 +23,7 @@ Personal portfolio and contact site for **Thomas Schulze – IT Solutions**, pub
 
 ## Project overview
 
-A zero-dependency, framework-free static website consisting of five pages:
+A zero-dependency, framework-free static website consisting of six pages:
 
 | Page | File | Purpose |
 |------|------|---------|
@@ -32,6 +32,7 @@ A zero-dependency, framework-free static website consisting of five pages:
 | Projects | `projects.html` | Project cards with tags and GitHub links |
 | Contact | `contact.html` | Contact info + mailto: contact form |
 | Impressum | `impressum.html` | Legal notice (required by German law) |
+| Datenschutz | `datenschutz.html` | Privacy policy / Datenschutzerklärung (required by DSGVO) |
 
 All pages share a single stylesheet (`css/style.css`) and two scripts (`js/i18n.js` and `js/main.js`).  
 The site supports **German and English** (language switcher in the footer) and a **dark / light colour theme** (theme toggle in the footer).
@@ -47,6 +48,7 @@ thomas-schulze-it-solutions.contact.io/
 ├── projects.html     # Projects / portfolio page
 ├── contact.html      # Contact info + form
 ├── impressum.html    # Legal notice (Impressum)
+├── datenschutz.html  # Privacy policy (Datenschutzerklärung)
 ├── css/
 │   └── style.css     # Single shared stylesheet (dark/light theme, responsive)
 ├── fonts/
@@ -106,11 +108,11 @@ Open the URL shown in the terminal (usually <http://localhost:3000>).
 
 ### Page content
 
-Each page is a self-contained HTML file. Navigation, `<head>`, and `<footer>` must be kept in sync across all five files manually – there is no templating engine.
+Each page is a self-contained HTML file. Navigation, `<head>`, and `<footer>` must be kept in sync across all six files manually – there is no templating engine.
 
 **Checklist when adding or renaming a page:**
 
-1. Add an `<li><a href="newpage.html" data-i18n="nav.key">Label</a></li>` entry to the `<ul class="nav-links">` block in **all five** existing HTML files.
+1. Add an `<li><a href="newpage.html" data-i18n="nav.key">Label</a></li>` entry to the `<ul class="nav-links">` block in **all six** existing HTML files.
 2. Create the new HTML file, copying the `<nav>` and `<footer>` blocks verbatim from an existing page.
 3. Include `<link rel="stylesheet" href="css/style.css" />`, `<script src="js/i18n.js"></script>`, and `<script src="js/main.js"></script>`.
 4. Add the new nav translation key to both the `en` and `de` objects in `js/i18n.js`.

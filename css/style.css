@@ -1019,6 +1019,25 @@ footer a:hover {
   color: var(--primary);
 }
 
+.impressum-content ul {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.impressum-content ul li {
+  margin-bottom: 0.4rem;
+}
+
+.impressum-content code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.88em;
+  background: var(--surface-subtle);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+}
+
 /* ===== Light Mode ===== */
 html[data-theme="light"] {
   --dark: #f5f3ee;

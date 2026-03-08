@@ -23,7 +23,8 @@ thomas-schulze-it-solutions.contact.io/
 ├── about.html        # About me (bio, skills, stats, services)
 ├── projects.html     # Project portfolio cards
 ├── contact.html      # Contact details + mailto: form
-├── impressum.html    # Legal notice (Impressum)
+├── impressum.html    # Legal notice (Impressum) – German-only (legal requirement)
+├── datenschutz.html  # Privacy policy (Datenschutzerklärung) – German-only (legal document)
 ├── css/
 │   └── style.css     # One shared stylesheet – dark/light theme, CSS variables, responsive
 ├── fonts/
@@ -91,7 +92,7 @@ Each decision below carries agent-actionable rules. Before making changes, ident
 **Rationale:** A stylesheet cannot read `localStorage`. Moving detection to an external script would require `defer`/`async`, which lets the stylesheet render first with the wrong theme and then flash to the correct one.  
 **Agent rules:**
 - ❌ Never move the inline snippet to an external file or add `defer`/`async` to it.
-- ❌ Never remove or duplicate the inline snippet — one per page, identical across all five pages.
+- ❌ Never remove or duplicate the inline snippet — one per page, identical across all six pages.
 - ✅ Valid `data-theme` values are exactly `"dark"` (default) and `"light"`. No other values are valid.
 - ✅ The `localStorage` key is `ts_theme`. Do not rename it.
 
@@ -104,6 +105,7 @@ Each decision below carries agent-actionable rules. Before making changes, ident
 - ❌ Never hard-code English-only text in HTML markup.
 - ❌ Never set `<html lang="">` to a fixed value other than `de` in a new page — i18n.js overwrites it at runtime based on the user's preference.
 - ✅ The `localStorage` key is `ts_lang`. Valid values are `"de"` and `"en"` only; anything else is normalised to `"de"`.
+- **Exception – legal pages:** `impressum.html` and `datenschutz.html` are intentionally German-only. These are legal documents required under German law (TMG, DSGVO) and are conventionally authored in German. They do not use `data-i18n` attributes and their content must not be machine-translated. The footer links to these pages are translated via `footer.impressum` / `footer.datenschutz` keys.
 
 ### AD-7: Projects rendered dynamically from JS data objects (not HTML)
 
@@ -274,7 +276,7 @@ Every page follows this skeleton exactly. Copy it when creating a new page:
   </main>
 
   <footer>
-    <p>&copy; 2024 Thomas Schulze IT Solutions &middot; <a href="contact.html" data-i18n="footer.contact">Contact</a> &middot; <a href="impressum.html" data-i18n="footer.impressum">Impressum</a></p>
+    <p>&copy; 2024 Thomas Schulze IT Solutions &middot; <a href="contact.html" data-i18n="footer.contact">Contact</a> &middot; <a href="impressum.html" data-i18n="footer.impressum">Impressum</a> &middot; <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></p>
     <div class="footer-controls">
       <div class="lang-toggle" aria-label="Language switcher">
         <button class="lang-btn" data-lang="de">DE</button>
@@ -301,11 +303,11 @@ Every page follows this skeleton exactly. Copy it when creating a new page:
 </html>
 ```
 
-### Navigation – keep all five files in sync
+### Navigation – keep all six files in sync
 
 There is **no templating**. When you add or rename a navigation item you must update the
-`<ul class="nav-links">` block identically in **all five** HTML files:
-`index.html`, `about.html`, `projects.html`, `contact.html`, `impressum.html`.
+`<ul class="nav-links">` block identically in **all six** HTML files:
+`index.html`, `about.html`, `projects.html`, `contact.html`, `impressum.html`, `datenschutz.html`.
 You must also add the corresponding translation key to both `en` and `de` in `js/i18n.js`.
 
 ### Section pattern
@@ -537,7 +539,7 @@ To change the delivery email: update the `mailto:` address in the `mailtoUrl` st
 | Change colours or typography | `css/style.css` – `:root` tokens |
 | Add a new UI component | `css/style.css` (new labelled section), then use in the relevant HTML |
 | Change form behaviour | `js/main.js` – contact form handler |
-| Add a new page | New `.html` file + add nav link in all five existing HTML files + add translation keys in `js/i18n.js` |
+| Add a new page | New `.html` file + add nav link in all six existing HTML files + add translation keys in `js/i18n.js` |
 | Change the contact delivery email | `js/main.js` – update the `mailto:` address in `mailtoUrl` |
 | Switch to a backend form service | Update `js/main.js` (replace mailto block with `fetch()`) and `action` on `<form>` in `contact.html` |
 | Update hero headline or chips | `index.html` + translation keys in `js/i18n.js` |
@@ -545,6 +547,7 @@ To change the delivery email: update the `mailto:` address in the `mailtoUrl` st
 | Change the theme colour palette | `css/style.css` – `:root` tokens and `html[data-theme="light"]` overrides |
 | Replace or update the logo | `img/logo.svg` and/or `img/logo-icon.svg` |
 | Update the Impressum | `impressum.html` |
+| Update the Privacy Policy | `datenschutz.html` |
 
 ---
 
