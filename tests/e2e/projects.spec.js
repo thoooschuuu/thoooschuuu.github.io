@@ -63,6 +63,7 @@ test.describe('Projects page – card rendering', () => {
     expect(pageText).toContain('SoftwareONE AG');
     expect(pageText).toContain('CID GmbH');
     expect(pageText).toContain('Drefa MSG');
+    expect(pageText).toContain('Groß, Weber & Partner');
   });
 
   test('projects are sorted most-recent first (multiple cards exist)', async ({ page }) => {
