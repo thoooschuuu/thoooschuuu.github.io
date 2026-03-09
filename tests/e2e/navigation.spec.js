@@ -152,4 +152,26 @@ test.describe('SEO meta tags', () => {
     const content = await page.locator('meta[property="og:type"]').getAttribute('content');
     expect(content).toBe('website');
   });
+
+  for (const { path } of pages) {
+    test(`${path} has og:image meta tag`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('domcontentloaded');
+      const content = await page.locator('meta[property="og:image"]').getAttribute('content');
+      expect(content).toContain('social-preview.png');
+    });
+  }
+
+  test('index.html has JSON-LD Person structured data', async ({ page }) => {
+    await page.goto('/index.html');
+    await page.waitForLoadState('domcontentloaded');
+    const ldJson = await page.evaluate(() => {
+      const el = document.querySelector('script[type="application/ld+json"]');
+      return el ? JSON.parse(el.textContent) : null;
+    });
+    expect(ldJson).not.toBeNull();
+    expect(ldJson['@type']).toBe('Person');
+    expect(ldJson['name']).toBe('Thomas Schulze');
+    expect(ldJson['url']).toBe('https://thomas-schulze-it-solutions.de/');
+  });
 });
