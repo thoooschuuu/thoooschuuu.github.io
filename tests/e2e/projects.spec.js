@@ -39,8 +39,24 @@ test.describe('Projects page – card rendering', () => {
     const count = await periods.count();
     expect(count).toBeGreaterThan(0);
     const first = await periods.first().textContent();
-    // Should contain a separator between start and end date
+    // Should contain a separator between start and end date (or "present" label)
     expect(first).toMatch(/–/);
+  });
+
+  test('ongoing project (no endDate) shows "heute" in German', async ({ page }) => {
+    // Locate the known ongoing project by its stable title (language-independent)
+    const platformCard = page.locator('.project-card').filter({ hasText: 'Senior Software Engineer – Platform Team' });
+    await expect(platformCard).toHaveCount(1);
+    const periodText = await platformCard.locator('.project-period').textContent();
+    expect(periodText).toContain('heute');
+  });
+
+  test('ongoing project shows "present" in English', async ({ page }) => {
+    await page.evaluate(() => window.i18n.setLanguage('en'));
+    const platformCard = page.locator('.project-card').filter({ hasText: 'Senior Software Engineer – Platform Team' });
+    await expect(platformCard).toHaveCount(1);
+    const periodText = await platformCard.locator('.project-period').textContent();
+    expect(periodText).toContain('present');
   });
 
   test('each project card shows a customer name', async ({ page }) => {
@@ -63,6 +79,7 @@ test.describe('Projects page – card rendering', () => {
     expect(pageText).toContain('SoftwareONE AG');
     expect(pageText).toContain('CID GmbH');
     expect(pageText).toContain('Drefa MSG');
+    expect(pageText).toContain('Groß, Weber & Partner');
   });
 
   test('projects are sorted most-recent first (multiple cards exist)', async ({ page }) => {

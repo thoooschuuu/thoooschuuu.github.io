@@ -61,6 +61,7 @@
       'projects.desc.label': 'Project Description',
       'projects.role.label': 'My Role',
       'projects.tech.label': 'Technologies',
+      'projects.present':    'present',
       'projects.cta.text':   'Have a project in mind? Let\'s build something great together.',
       'projects.cta.btn':    'Get in Touch →',
 
@@ -151,6 +152,7 @@
       'projects.desc.label': 'Projektbeschreibung',
       'projects.role.label': 'Meine Rolle',
       'projects.tech.label': 'Technologien',
+      'projects.present':    'heute',
       'projects.cta.text':   'Haben Sie ein Projekt im Sinn? Lassen Sie uns gemeinsam etwas Großartiges entwickeln.',
       'projects.cta.btn':    'Kontakt aufnehmen →',
 
@@ -318,6 +320,27 @@
         startDate: '2020-12-31',
         endDate: '2023-02-27',
         technologies: ['.NET', 'ASP.NET Core', 'Azure', 'API Management', 'AWS', 'C#', 'git', 'Terraform', 'REST', 'Messaging', 'Azure DevOps', 'Auth0', 'Target Process', 'ServiceNow']
+      },
+      {
+        id: '7f34bc9c-0e46-485b-baff-6d045db34a8c',
+        title: 'Senior Software Engineer',
+        description: '<p>Development of microservices for the management and processing of master data for metering within a large enterprise system in the energy industry.<br />The focus was on processing and clearing incoming master data from various sources.</p><p>The system is part of a comprehensive platform supporting key business processes in the energy market, developed in parallel by multiple teams.</p>',
+        role: '<ul><li>Planning and development of microservices based on Clean Architecture and Domain Driven Design</li><li>Development of a dynamically extensible clearing system for processing incoming master data</li><li>Training in modern programming and C# language concepts</li><li>Facilitator for team retrospectives</li></ul>',
+        customerDomain: 'Energy Sector',
+        customerName: 'Groß, Weber & Partner',
+        startDate: '2023-01-01',
+        endDate: '2025-08-31',
+        technologies: ['.NET Framework', '.NET 6', '.NET 8', 'NHibernate', 'PowerShell', 'Azure DevOps', 'Jenkins', 'MS SQL Server', 'Visual Studio', 'Visual Studio Code']
+      },
+      {
+        id: '541e6958-2258-49fc-ad29-f520f63fa576',
+        title: 'Senior Software Engineer – Platform Team',
+        description: '<p>Working in a central platform team within a large enterprise system in the energy industry.<br />The team\'s goal is the technical advancement of the platform and improving the development speed of the domain teams.</p><p>Key areas include the modernisation of the system landscape (migration from .NET Framework to .NET 8/10), the migration of the ORM technology from NHibernate 5.1 to 5.5, and the development of developer tools to support the teams.</p>',
+        role: '<ul><li>Migration of projects and NuGet packages across multiple teams from NHibernate 5.1 to NHibernate 5.5</li><li>Migration of a central ORM technology including adaptations to build tooling and development workflows</li><li>Development and maintenance of a Visual Studio extension for generating mapping code</li><li>Contributing to a central platform team for cross-team developer tooling</li><li>Facilitator for team retrospectives</li></ul>',
+        customerDomain: 'Energy Sector (Platform Team)',
+        customerName: 'Groß, Weber & Partner',
+        startDate: '2025-08-01',
+        technologies: ['.NET Framework', '.NET 8', '.NET 10', 'NHibernate', 'PowerShell', 'Azure DevOps', 'Jenkins', 'Visual Studio', 'Visual Studio Code']
       }
     ],
 
@@ -442,6 +465,27 @@
         startDate: '2020-12-31',
         endDate: '2023-02-27',
         technologies: ['.NET', 'ASP.NET Core', 'Azure', 'API Management', 'AWS', 'C#', 'git', 'Terraform', 'REST', 'Messaging', 'Azure DevOps', 'Auth0', 'Target Process', 'ServiceNow']
+      },
+      {
+        id: '7f34bc9c-0e46-485b-baff-6d045db34a8c',
+        title: 'Senior Software Engineer',
+        description: '<p>Entwicklung von Microservices zur Verwaltung und Verarbeitung von Stammdaten des Messwesens innerhalb eines großen Enterprise-Systems der Energiewirtschaft.<br />Im Fokus stand die Verarbeitung und das Clearing eingehender Stammdaten aus verschiedenen Quellen.</p><p>Das System ist Teil einer umfangreichen Plattform zur Unterstützung zentraler Geschäftsprozesse im Energiemarkt und wird von mehreren Teams parallel weiterentwickelt.</p>',
+        role: '<ul><li>Planung und Entwicklung von Microservices auf Basis von Clean Architecture und Domain Driven Design</li><li>Entwicklung eines dynamisch erweiterbaren Clearingsystems zur Verarbeitung eingehender Stammdaten</li><li>Schulung von modernen Programmier- und C#-Sprachkonzepten</li><li>Facilitator für Team-Retrospektiven</li></ul>',
+        customerDomain: 'Energiewirtschaft',
+        customerName: 'Groß, Weber & Partner',
+        startDate: '2023-01-01',
+        endDate: '2025-08-31',
+        technologies: ['.NET Framework', '.NET 6', '.NET 8', 'NHibernate', 'PowerShell', 'Azure DevOps', 'Jenkins', 'MS SQL Server', 'Visual Studio', 'Visual Studio Code']
+      },
+      {
+        id: '541e6958-2258-49fc-ad29-f520f63fa576',
+        title: 'Senior Software Engineer – Platform Team',
+        description: '<p>Arbeit in einem zentralen Platform Team innerhalb eines großen Enterprise-Systems der Energiewirtschaft.<br />Ziel des Teams ist die technische Weiterentwicklung der Plattform sowie die Verbesserung der Entwicklungsgeschwindigkeit der Fachteams.</p><p>Schwerpunkte sind die Modernisierung der Systemlandschaft (Migration von .NET Framework auf .NET 8/10), die Migration der ORM-Technologie von NHibernate 5.1 auf 5.5 sowie die Entwicklung von Entwicklerwerkzeugen zur Unterstützung der Teams.</p>',
+        role: '<ul><li>Migration von Projekten und NuGet-Packages über mehrere Teams von NHibernate 5.1 auf NHibernate 5.5</li><li>Migration einer zentralen ORM-Technologie inklusive Anpassungen an Build-Tooling und Entwicklungsworkflows</li><li>Entwicklung und Wartung einer Visual-Studio-Erweiterung zur Generierung von Mapping-Code</li><li>Mitarbeit in einem zentralen Platform Team für teamübergreifendes Developer-Tooling</li><li>Facilitator für Team-Retrospektiven</li></ul>',
+        customerDomain: 'Energiewirtschaft (Platform Team)',
+        customerName: 'Groß, Weber & Partner',
+        startDate: '2025-08-01',
+        technologies: ['.NET Framework', '.NET 8', '.NET 10', 'NHibernate', 'PowerShell', 'Azure DevOps', 'Jenkins', 'Visual Studio', 'Visual Studio Code']
       }
     ]
   };
@@ -460,7 +504,11 @@
     'Finanzwesen':                                         '💳',
     'eCommerce':                                           '🛒',
     'Software Portfolio Management & Licensing':           '🗂️',
-    'Software-Portfolio-Management und Software-Lizenzierung': '🗂️'
+    'Software-Portfolio-Management und Software-Lizenzierung': '🗂️',
+    'Energy Sector':                                       '⚡',
+    'Energy Sector (Platform Team)':                       '⚡',
+    'Energiewirtschaft':                                   '⚡',
+    'Energiewirtschaft (Platform Team)':                   '⚡'
   };
 
   function getIcon(domain) {
@@ -507,7 +555,7 @@
 
     grid.innerHTML = sorted.map(function (p) {
       var start    = formatDate(p.startDate, lang);
-      var end      = formatDate(p.endDate, lang);
+      var end      = p.endDate ? formatDate(p.endDate, lang) : t['projects.present'];
       var icon     = getIcon(p.customerDomain);
       var safeId   = escapeHtml(p.id);
       var headerId = 'ph-' + safeId;

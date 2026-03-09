@@ -510,12 +510,12 @@ Projects are stored as JS objects inside `js/i18n.js` — not as HTML in `projec
   customerDomain: 'string',           // Industry/domain label (text-only, HTML-escaped; drives icon)
   customerName:   'string',           // Customer/employer name (text-only, HTML-escaped; identical in en and de)
   startDate:      'YYYY-MM-DD',       // ISO 8601 date string (UTC); must be a complete date
-  endDate:        'YYYY-MM-DD',       // ISO 8601 date string (UTC); must be a complete date
+  endDate:        'YYYY-MM-DD',       // ISO 8601 date string (UTC); optional — omit for ongoing projects
   technologies:   ['string', …]       // Array of technology names (text-only, HTML-escaped)
 }
 ```
 
-> **Ongoing projects:** There is no `null`/`undefined` support for `endDate` — the date formatter requires a complete `YYYY-MM-DD` string. For an ongoing engagement, use the last day of the current month as a placeholder (e.g., `"2025-12-31"`). Update `endDate` when the project concludes.
+> **Ongoing projects:** `endDate` is optional. When omitted, the period display shows `"present"` (EN) or `"heute"` (DE), driven by the `projects.present` translation key. When the project concludes, add the `endDate` as a `"YYYY-MM-DD"` string.
 
 **HTML trust model – important for security:**
 
