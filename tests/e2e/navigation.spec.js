@@ -103,4 +103,17 @@ test.describe('Page structure', () => {
       await expect(page.locator('.lang-btn[data-lang="en"]')).toBeAttached();
     });
   }
+
+  test('index.html hero section shows the full logo', async ({ page }) => {
+    await page.goto('/index.html');
+    const heroLogo = page.locator('.hero-logo');
+    await expect(heroLogo).toBeAttached();
+    await expect(heroLogo).toBeVisible();
+    await expect(heroLogo).toHaveAttribute('src', 'img/logo.svg');
+
+    const isLoaded = await heroLogo.evaluate(img =>
+      img instanceof HTMLImageElement && img.complete && img.naturalWidth > 0
+    );
+    await expect(isLoaded).toBeTruthy();
+  });
 });
