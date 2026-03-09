@@ -44,11 +44,17 @@ test.describe('Projects page – card rendering', () => {
   });
 
   test('each project card shows a customer name', async ({ page }) => {
+    const cards = page.locator('.project-card');
     const customerNames = page.locator('.project-customer-name');
-    const count = await customerNames.count();
-    expect(count).toBeGreaterThan(0);
-    const first = await customerNames.first().textContent();
-    expect(first?.trim().length).toBeGreaterThan(0);
+    const cardCount = await cards.count();
+    const nameCount = await customerNames.count();
+    // Every card must have exactly one customer name element
+    expect(nameCount).toBe(cardCount);
+    // Every customer name element must be non-empty
+    for (const el of await customerNames.all()) {
+      const text = await el.textContent();
+      expect(text?.trim().length).toBeGreaterThan(0);
+    }
   });
 
   test('known customer names appear on the projects page', async ({ page }) => {
