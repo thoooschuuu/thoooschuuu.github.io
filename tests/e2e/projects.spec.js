@@ -43,6 +43,28 @@ test.describe('Projects page – card rendering', () => {
     expect(first).toMatch(/–/);
   });
 
+  test('each project card shows a customer name', async ({ page }) => {
+    const cards = page.locator('.project-card');
+    const customerNames = page.locator('.project-customer-name');
+    const cardCount = await cards.count();
+    const nameCount = await customerNames.count();
+    // Every card must have exactly one customer name element
+    expect(nameCount).toBe(cardCount);
+    // Every customer name element must be non-empty
+    for (const el of await customerNames.all()) {
+      const text = await el.textContent();
+      expect(text?.trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  test('known customer names appear on the projects page', async ({ page }) => {
+    const pageText = await page.locator('#projectsGrid').textContent();
+    // Verify a representative sample of the expected customer names
+    expect(pageText).toContain('SoftwareONE AG');
+    expect(pageText).toContain('CID GmbH');
+    expect(pageText).toContain('Drefa MSG');
+  });
+
   test('projects are sorted most-recent first (multiple cards exist)', async ({ page }) => {
     const count = await page.locator('.project-card').count();
     expect(count).toBeGreaterThan(1);

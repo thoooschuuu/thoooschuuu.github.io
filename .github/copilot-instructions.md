@@ -508,6 +508,7 @@ Projects are stored as JS objects inside `js/i18n.js` — not as HTML in `projec
   description:    '<p>HTML…</p>',     // Project description (trusted HTML: <p>, <ul>, <li>, <br>)
   role:           '<ul>…</ul>',       // Agent's role (trusted HTML: <ul>, <li>, <p>)
   customerDomain: 'string',           // Industry/domain label (text-only, HTML-escaped; drives icon)
+  customerName:   'string',           // Customer/employer name (text-only, HTML-escaped; identical in en and de)
   startDate:      'YYYY-MM-DD',       // ISO 8601 date string (UTC); must be a complete date
   endDate:        'YYYY-MM-DD',       // ISO 8601 date string (UTC); must be a complete date
   technologies:   ['string', …]       // Array of technology names (text-only, HTML-escaped)
@@ -524,6 +525,7 @@ Projects are stored as JS objects inside `js/i18n.js` — not as HTML in `projec
 | `role` | `innerHTML` (trusted) | Same as `description` |
 | `title` | `escapeHtml()` → text | Plain text only — no HTML tags |
 | `customerDomain` | `escapeHtml()` → text | Plain text only |
+| `customerName` | `escapeHtml()` → text | Plain text only — company name, identical in en and de |
 | `technologies[]` | `escapeHtml()` → text | Plain text only — each entry is one technology name |
 
 **`domainIcons` mapping:**

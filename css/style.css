@@ -731,6 +731,17 @@ img {
   letter-spacing: 0.2px;
 }
 
+.project-customer-name {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.project-customer-name::before {
+  content: '·';
+  margin: 0 0.35rem;
+  opacity: 0.6;
+}
+
 .project-period {
   font-size: 0.78rem;
   color: var(--text-muted);

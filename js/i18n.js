@@ -204,6 +204,7 @@
         description: '<p>Our client had a call center to receive listener opinions, sweepstakes participants, and other calls from listeners.<br />The project\'s task was to display categorized live caller information to known persons during a call (previous calls, previous winnings, spam, etc.) and to create appropriate data for new persons.<br />Furthermore, block lists should be able to be maintained as well as research and evaluations from the data stock should be possible.</p>',
         role: '<ul><li>Development of the web interface</li><li>Delivery of components</li><li>Testing of the components to be delivered</li><li>Requirements engineering with the customer</li></ul>',
         customerDomain: 'Broadcasting (Radio)',
+        customerName: 'Drefa MSG',
         startDate: '2010-11-30',
         endDate: '2013-01-30',
         technologies: ['ASP.NET', 'JavaScript', '.NET Framework', 'TFS', 'C#']
@@ -214,6 +215,7 @@
         description: '<p>A complex fat client application needed to be technologically updated. For this, the .NET Framework 2.0 used should be lifted to .NET Framework 4.0. This required corresponding analyses and subsequent adjustments to third-party components.</p>',
         role: '<ul><li>Analysis of the technical impacts of the migration</li><li>Implementation of the migration</li><li>Adjustments to the interface for the use of third-party components</li></ul>',
         customerDomain: 'Broadcasting',
+        customerName: 'Drefa MSG',
         startDate: '2011-12-31',
         endDate: '2012-09-29',
         technologies: ['.NET Framework', 'C#', 'TFS']
@@ -224,6 +226,7 @@
         description: '<p>The basis was the necessity in the company\'s central product to export and import data. For this, an expandable client-server architecture was developed. With this, such a dynamic export or import could be carried out ad hoc and time-controlled.</p>',
         role: '<ul><li>Product management</li><li>Customer training</li><li>Implementation of the complete application</li><li>Architecture and theoretical preliminary work (bachelor thesis)</li></ul>',
         customerDomain: 'Broadcasting',
+        customerName: 'Drefa MSG',
         startDate: '2012-12-31',
         endDate: '2015-03-30',
         technologies: ['WPF', 'WCF', '.NET Framework', 'C#', 'MEF', 'TFS']
@@ -234,6 +237,7 @@
         description: '<p>A SAM solution was developed, including identification of the software installed on the customer\'s clients.<br />Part of the project was to provide the evaluations on a website with configurable dashboards.</p>',
         role: '<ul><li>Development of the dashboard (new KPIs, introduction of TypeScript and UnitTests)</li><li>Optimization of WPF components in client-server applications</li><li>Development of an engine based on code generation with Roslyn (C#) for executing freely definable rules</li></ul>',
         customerDomain: 'Software Licensing',
+        customerName: 'COMPAREX AG',
         startDate: '2015-03-31',
         endDate: '2016-06-29',
         technologies: ['.NET Framework', 'C#', 'WPF', 'ASP.NET', 'JavaScript', 'TypeScript', 'SQL Server', 'Azure DevOps']
@@ -244,6 +248,7 @@
         description: '<p>The aim was to create a digital advisory process for OTC products. The process, as well as all individual steps, were configurable. The application was usable for different customers both in terms of interface and configuration.</p>',
         role: '<ul><li>Development of components in ASP.NET and Angular 2</li><li>Driving test-driven development</li><li>Stand-in for Scrum Master and team leader</li><li>Setup and maintenance of the CI/CD pipeline with VSTS (Azure DevOps)</li></ul>',
         customerDomain: 'Finance',
+        customerName: 'Lucht Probst Associates GmbH',
         startDate: '2016-06-30',
         endDate: '2018-07-30',
         technologies: ['ASP.NET', '.NET Framework', 'C#', 'git', 'Angular', 'TypeScript', 'REST', 'Azure DevOps', 'Miro']
@@ -254,6 +259,7 @@
         description: '<p>A web shop was developed for a customer. In my area, overarching components were developed for this purpose (header, footer, cookie banner, etc.). The components and services were embedded in a microservice and micro-frontend infrastructure.</p>',
         role: '<ul><li>Development of ASP.NET Core Web APIs</li><li>Introducing the team to processes for continuous improvement</li><li>Architecture of the services and their interaction</li><li>Monitoring of agile processes or agile process artifacts in the team</li><li>Preparing and leading retrospectives and planning</li></ul>',
         customerDomain: 'eCommerce',
+        customerName: 'CID GmbH',
         startDate: '2018-07-31',
         endDate: '2020-12-30',
         technologies: ['ASP.NET Core', '.NET', 'C#', 'git', 'React', 'TypeScript', 'TDD', 'Jira', 'Bitbucket', 'Octopus', 'TeamCity', 'Miro']
@@ -264,6 +270,7 @@
         description: '<p>The customer\'s website was to carry out AB tests using a solution for Conversion Rate Optimisation. Part of the project was the evaluation of a suitable solution, the GDPR-compliant introduction of this solution into the web shop and the training of developers and QA engineers. Also the development of AB tests themselves was part of the project.</p><p>The individual tasks were:</p><ul><li>Evaluating CRO solutions</li><li>Introduction of the CRO solution in the web shop (planning + development)</li><li>Training of developers and QA engineers on the found CRO solution</li><li>Development of AB tests</li><li>Delivery and monitoring of tests and trackings</li></ul>',
         role: '<p>Project Management and Development</p>',
         customerDomain: 'eCommerce',
+        customerName: 'CID GmbH',
         startDate: '2018-07-31',
         endDate: '2020-12-30',
         technologies: ['JavaScript', 'ABTasty', 'git', 'Jira', 'Bitbucket', 'Octopus', 'TeamCity']
@@ -274,6 +281,7 @@
         description: '<p>A chapter is a cross-team, theme-specific group of people. The aim of the chapter is to expand their own knowledge on a topic and carry it into their teams. Another goal is to establish standards or guard rails across all teams. The goal of the Agile Processes Chapter was exactly these points for agile development and continuous improvement within the teams.</p>',
         role: '<ul><li>Organize and lead chapter meetings</li><li>Prepare and introduce topics into the chapter</li><li>Introduce the worked out topics into my own team</li></ul>',
         customerDomain: 'eCommerce',
+        customerName: 'CID GmbH',
         startDate: '2019-02-28',
         endDate: '2020-12-30',
         technologies: ['Miro', 'Jira']
@@ -284,6 +292,7 @@
         description: '<p>APIs are the backbone of modern software landscapes. In order to achieve the lowest possible costs for the technical onboarding of individual APIs and overall a uniform Developer Experience across all public APIs, a uniform set of rules and a controlling instance was needed. That was the API Council.</p>',
         role: '<ul><li>Organization of regular Council Meetings</li><li>Development of ideas to improve the rule set of the APIs</li><li>Bringing the technical perspective into the Council. Informing about technical possibilities in the company\'s DevOps strategy</li><li>Active review of APIs from all teams</li></ul>',
         customerDomain: 'Software Portfolio Management & Licensing',
+        customerName: 'SoftwareONE AG',
         startDate: '2020-03-31',
         endDate: '2023-02-27',
         technologies: ['OpenAPI 3', 'Azure DevOps', 'git', 'Miro', 'Spectral', 'REST', 'Swagger', 'YAML']
@@ -294,6 +303,7 @@
         description: '<p>API management solutions as SaaS solutions, such as Azure API Management Service or AWS API Management, serve as a central access point for communication via APIs (WebAPIs, REST, gRPC, etc). To support multiple environments and for easy editing and use of these APIs, a custom solution was developed based on the Azure API Management Service.</p>',
         role: '<ul><li>Collecting, organizing, and prioritizing the requirements of all stakeholders</li><li>Planning the solution</li><li>Creating User Journey Maps, Epics, Features, User Stories</li><li>Representing the team in PI Plannings and other meetings</li></ul>',
         customerDomain: 'Software Portfolio Management & Licensing',
+        customerName: 'SoftwareONE AG',
         startDate: '2020-09-30',
         endDate: '2023-02-27',
         technologies: ['Target Process', 'Azure DevOps', 'Azure', 'Miro']
@@ -304,6 +314,7 @@
         description: '<p>The communication between various domains and services is to be facilitated with a central platform. The focus is on hosting web APIs and the transport of messages. Important communication components for global systems should also be located in the Integration Platform. In addition to the solutions provided, the IP should also serve as a knowledge sharer and pioneer for new technical ideas.</p>',
         role: '<ul><li>Design and architecture of a hybrid cloud solution (Azure and AWS)</li><li>Technical coordination with consumers or providers of APIs</li><li>Design of OpenAPI 3 REST interfaces</li><li>Prototypical development of new ideas</li></ul>',
         customerDomain: 'Software Portfolio Management & Licensing',
+        customerName: 'SoftwareONE AG',
         startDate: '2020-12-31',
         endDate: '2023-02-27',
         technologies: ['.NET', 'ASP.NET Core', 'Azure', 'API Management', 'AWS', 'C#', 'git', 'Terraform', 'REST', 'Messaging', 'Azure DevOps', 'Auth0', 'Target Process', 'ServiceNow']
@@ -317,6 +328,7 @@
         description: '<p>Unser Kunde hatte ein Callcenter, um Hörermeinungen, Gewinnspielteilnehmer und sonstige Anrufe von Hörern entgegenzunehmen.<br />Aufgabe des Projektes war es Anruferinformationen zu bekannten Personen während eines Anrufes kategorisiert live anzuzeigen (bisherige Anrufe, bisherige Gewinne, Spam, etc.) und für neue Personen entsprechende Daten anzulegen.<br />Weiterhin sollten Blocklisten gepflegt werden können sowie Recherche und Auswertungen aus dem Datenbestand möglich sein.</p>',
         role: '<ul><li>Entwicklung der Weboberfläche</li><li>Auslieferung der Komponenten</li><li>Test der auszuliefernden Komponenten</li><li>Requirementsengineering beim Kunden</li></ul>',
         customerDomain: 'Hörfunk',
+        customerName: 'Drefa MSG',
         startDate: '2010-11-30',
         endDate: '2013-01-30',
         technologies: ['ASP.NET', 'JavaScript', '.NET Framework', 'TFS', 'C#']
@@ -327,6 +339,7 @@
         description: '<p>Eine komplexe Fat-Client Anwendung sollte technologisch auf den neuesten Stand gebracht werden. Dafür sollte das genutzte .NET Framework 2.0 auf .NET Framework 4.0 gehoben werden. Dafür notwendig waren entsprechende Analysen und in Folge Anpassungen an Third-Party Komponenten.</p>',
         role: '<ul><li>Analyse der technischen Auswirkungen der Migration</li><li>Durchführung der Migration</li><li>Anpassungen an der Schnittstelle zur Nutzung von Third-Party Komponenten</li></ul>',
         customerDomain: 'Rundfunk',
+        customerName: 'Drefa MSG',
         startDate: '2011-12-31',
         endDate: '2012-09-29',
         technologies: ['.NET Framework', 'C#', 'TFS']
@@ -337,6 +350,7 @@
         description: '<p>Grundlage war die Notwendigkeit in dem zentralen Produkt der Firma, Daten zu ex- und importieren. Dafür wurde eine erweiterbare Client-Server Architektur entwickelt. Mit dieser konnte ad-hoc und zeitgesteuert ein solcher dynamischer Ex- oder Import durchgeführt werden.</p>',
         role: '<ul><li>Produktmanagement</li><li>Schulungen der Kunden</li><li>Implementierung der kompletten Anwendung</li><li>Architektur und theoretische Vorarbeit (Bachelorarbeit)</li></ul>',
         customerDomain: 'Rundfunk',
+        customerName: 'Drefa MSG',
         startDate: '2012-12-31',
         endDate: '2015-03-30',
         technologies: ['WPF', 'WCF', '.NET Framework', 'C#', 'MEF', 'TFS']
@@ -347,6 +361,7 @@
         description: '<p>Entwickelt wurde eine SAM Lösung inkl. Identifizierung der installierten Software auf den Clients der Kunden.<br />Teil des Projektes war die Bereitstellung der Auswertungen auf einer Webseite mit konfigurierbaren Dashboards.</p>',
         role: '<ul><li>Entwicklung des Dashboards (neue KPIs, Einführung TypeScript und UnitTests)</li><li>Optimierung von WPF Komponenten in Client-Server Anwendungen</li><li>Entwicklung einer auf Codegenerierung mit Roslyn (C#) basierenden Engine zur Ausführung von frei definierbaren Regeln</li></ul>',
         customerDomain: 'Softwarelizenzierung',
+        customerName: 'COMPAREX AG',
         startDate: '2015-03-31',
         endDate: '2016-06-29',
         technologies: ['.NET Framework', 'C#', 'WPF', 'ASP.NET', 'JavaScript', 'TypeScript', 'SQL Server', 'Azure DevOps']
@@ -357,6 +372,7 @@
         description: '<p>Ziel war die Erstellung eines digitalen Beratungsprozesses für OTC Produkte. Der Prozess, sowie alle einzelnen Schritte waren konfigurierbar. Die Anwendung war sowohl in der Oberfläche, als auch der Konfiguration für verschiedene Kunden nutzbar.</p>',
         role: '<ul><li>Entwicklung von Komponenten in ASP.NET und Angular 2</li><li>Treiben der testgetriebenen Entwicklung</li><li>Vertretung für Scrum Master und Teamleiter</li><li>Aufbau und Pflege der CI/CD Pipeline mit VSTS (Azure DevOps)</li></ul>',
         customerDomain: 'Finanzwesen',
+        customerName: 'Lucht Probst Associates GmbH',
         startDate: '2016-06-30',
         endDate: '2018-07-30',
         technologies: ['ASP.NET', '.NET Framework', 'C#', 'git', 'Angular', 'TypeScript', 'REST', 'Azure DevOps', 'Miro']
@@ -367,6 +383,7 @@
         description: '<p>Für einen Kunden wurde ein Webshop entwickelt. In meinem Bereich wurden übergreifende Komponenten dafür entwickelt (Header, Footer, Cookie-Banner, etc.). Eingebettet wurden die Komponenten und Services in eine Microservice und Micro-Frontend Infrastruktur.</p>',
         role: '<ul><li>Entwicklung von ASP.NET Core Web APIs</li><li>Heranführung des Teams an Prozesse zur kontinuierlichen Verbesserung</li><li>Architektur der Services und deren Zusammenspiel</li><li>Überwachung von agilen Prozessen bzw. von agilen Prozessartefakten im Team</li><li>Vorbereiten und Leiten von Retrospektiven und Planungen</li></ul>',
         customerDomain: 'eCommerce',
+        customerName: 'CID GmbH',
         startDate: '2018-07-31',
         endDate: '2020-12-30',
         technologies: ['ASP.NET Core', '.NET', 'C#', 'git', 'React', 'TypeScript', 'TDD', 'Jira', 'Bitbucket', 'Octopus', 'TeamCity', 'Miro']
@@ -377,6 +394,7 @@
         description: '<p>Auf der Webseite des Kunden sollte mit Hilfe einer Lösung zur Conversion Rate Optimisation AB Tests durchgeführt werden. Teil des Projektes war die Evaluation einer passenden Lösung, die DSGVO-gerechte Einführung dieser Lösung in den Webshop und die Schulung der Entwickler/-innen und QS-Ingenieur/-innen. Auch die Entwicklung von AB Tests selbst war Teil des Projektes.</p><p>Die einzelnen Aufgaben waren dabei:</p><ul><li>CRO Lösungen evaluieren</li><li>Einführung der CRO Lösung in den Webshop (Planung + Entwicklung)</li><li>Schulung von Entwickler/-innen und QS-Ingenieur/-innen auf die gefundene CRO Lösung</li><li>Entwicklung von AB Tests</li><li>Auslieferung und Überwachung von Tests und Trackings</li></ul>',
         role: '<p>Projektleitung und Entwicklung</p>',
         customerDomain: 'eCommerce',
+        customerName: 'CID GmbH',
         startDate: '2018-07-31',
         endDate: '2020-12-30',
         technologies: ['JavaScript', 'ABTasty', 'git', 'Jira', 'Bitbucket', 'Octopus', 'TeamCity']
@@ -387,6 +405,7 @@
         description: '<p>Ein Chapter ist eine teamübergreifende themenspezifische Gruppe von Personen. Diese versuchen im Chapter ihr eigenes Wissen zu einem Thema zu erweitern und dieses in ihre Teams zu tragen. Ein weiteres Ziel ist das Etablieren von Standards bzw. Guard Rails über alle Teams hinweg. Das Ziel des Agile Processes Chapter waren genau die genannten Punkte für die agile Entwicklung und kontinuierliche Verbesserung innerhalb der Teams.</p>',
         role: '<ul><li>Organisieren und Leiten von Chapter Meetings</li><li>Vorbereiten und Einbringen von Themen in das Chapter</li><li>Einbringen der erarbeiteten Themen in mein eigenes Team</li></ul>',
         customerDomain: 'eCommerce',
+        customerName: 'CID GmbH',
         startDate: '2019-02-28',
         endDate: '2020-12-30',
         technologies: ['Miro', 'Jira']
@@ -397,6 +416,7 @@
         description: '<p>APIs sind das Rückgrat von modernen Softwarelandschaften. Um möglichst geringe Kosten für das technische Onboarding einzelner APIs zu erreichen und insgesamt eine einheitliche Developer Experience über alle öffentlichen APIs herzustellen, wurde ein einheitliches Regelwerk und eine kontrollierende Instanz gebraucht. Das war das API Council.</p>',
         role: '<ul><li>Organisation von regelmäßigen Council Meetings</li><li>Entwickeln von Ideen zur Verbesserung des Regelwerkes der APIs</li><li>Einbringen der technischen Sicht in das Council. Informieren über technische Möglichkeiten in der DevOps-Strategie des Unternehmens</li><li>Aktives Review von APIs von allen Teams</li></ul>',
         customerDomain: 'Software-Portfolio-Management und Software-Lizenzierung',
+        customerName: 'SoftwareONE AG',
         startDate: '2020-03-31',
         endDate: '2023-02-27',
         technologies: ['OpenAPI 3', 'Azure DevOps', 'git', 'Miro', 'Spectral', 'REST', 'Swagger', 'YAML']
@@ -407,6 +427,7 @@
         description: '<p>API Managementlösungen als SaaS Lösung, wie der Azure API Management Service oder AWS API Management, dienen als zentraler Zugriffspunkt für die Kommunikation über APIs (WebAPIs, REST, gRPC, etc). Zur Unterstützung von mehreren Umgebungen sowie zur einfachen Bearbeitung und Nutzung dieser APIs wurde auf Basis des Azure API Management Service eine eigene Lösung entwickelt.</p>',
         role: '<ul><li>Sammeln, organisieren und priorisieren der Anforderungen von allen Stakeholdern</li><li>Planung der Lösung</li><li>Erstellen von User Journey Maps, Epics, Features, User Stories</li><li>Vertretung des Teams in PI Plannings und anderen Meetings</li></ul>',
         customerDomain: 'Software-Portfolio-Management und Software-Lizenzierung',
+        customerName: 'SoftwareONE AG',
         startDate: '2020-09-30',
         endDate: '2023-02-27',
         technologies: ['Target Process', 'Azure DevOps', 'Azure', 'Miro']
@@ -417,6 +438,7 @@
         description: '<p>Die Kommunikation zwischen verschiedenen Domänen und Services soll mit einer zentralen Plattform ermöglicht werden. Dabei stehen das Hosting von Web APIs und der Transport von Messages im Fokus. Auch sollen wichtige Kommunikationskomponenten zu globalen Systemen in der Integration Platform angesiedelt sein. Neben den bereitgestellten Lösungen soll die IP auch als Wissensteiler und Vorreiter für neue technische Ideen dienen.</p>',
         role: '<ul><li>Design und Architektur einer hybriden Cloud-Lösung (Azure und AWS)</li><li>Technische Abstimmung mit Konsumenten bzw. Anbietern von APIs</li><li>Design von OpenAPI 3 REST-Schnittstellen</li><li>Prototypische Entwicklung von neuen Ideen</li></ul>',
         customerDomain: 'Software-Portfolio-Management und Software-Lizenzierung',
+        customerName: 'SoftwareONE AG',
         startDate: '2020-12-31',
         endDate: '2023-02-27',
         technologies: ['.NET', 'ASP.NET Core', 'Azure', 'API Management', 'AWS', 'C#', 'git', 'Terraform', 'REST', 'Messaging', 'Azure DevOps', 'Auth0', 'Target Process', 'ServiceNow']
@@ -498,6 +520,7 @@
               '<div class="project-domain-row">' +
                 '<span class="project-icon-sm" aria-hidden="true">' + icon + '</span>' +
                 '<span class="project-domain-label">' + escapeHtml(p.customerDomain) + '</span>' +
+                '<span class="project-customer-name">' + escapeHtml(p.customerName) + '</span>' +
               '</div>' +
               '<span class="project-period">' + escapeHtml(start) + ' \u2013 ' + escapeHtml(end) + '</span>' +
             '</div>' +
