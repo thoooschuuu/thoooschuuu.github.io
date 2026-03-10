@@ -50,13 +50,16 @@ thoooschuuu.github.io/
 ├── contact.html      # Contact info + form
 ├── impressum.html    # Legal notice (Impressum)
 ├── datenschutz.html  # Privacy policy (Datenschutzerklärung)
+├── robots.txt        # Crawl directives (allows all except /tests/; references sitemap)
+├── sitemap.xml       # XML sitemap listing all 6 pages
 ├── css/
 │   └── style.css     # Single shared stylesheet (dark/light theme, responsive)
 ├── fonts/
 │   └── arimo-*.woff2 # Self-hosted Arimo font files
 ├── img/
 │   ├── logo.svg      # Full logo
-│   └── logo-icon.svg # Icon-only logo (used in navbar and as favicon)
+│   ├── logo-icon.svg # Icon-only logo (used in navbar and as favicon)
+│   └── social-preview.png # 1200×630 px Open Graph / social sharing preview image
 ├── js/
 │   ├── i18n.js       # Translations (DE/EN) + project data rendering
 │   └── main.js       # Vanilla JS: theme toggle, nav highlight, hamburger, contact form
@@ -179,6 +182,53 @@ The form in `contact.html` uses a **client-side mailto: approach** — no backen
 - To change the delivery email address: update the `mailto:` address in all of the following places so they stay in sync: the `mailtoUrl` string inside the submit handler in `js/main.js`, the `action="mailto:..."` attribute on the `<form>` in `contact.html` (for the non-JS fallback), and the visible contact email link in `contact.html`.
 - To switch to a backend service (Azure Logic App, AWS API Gateway + SES, a PHP endpoint, etc.), replace the `window.location.href = mailtoUrl` block in `js/main.js` with a `fetch()` call to that endpoint, update the `action` attribute on `<form>` in `contact.html`, and restore the `formSuccess` / error-button pattern.
 
+### SEO
+
+The site includes a complete static SEO layer. All assets are committed to the repository root and served directly by GitHub Pages — no build step or plugin is required.
+
+#### Head metadata (all 6 pages)
+
+Every page's `<head>` contains:
+
+| Tag | Purpose |
+|-----|---------|
+| `<link rel="canonical">` | Canonical URL for this page (absolute `https://thomas-schulze-it-solutions.de/…`) |
+| `<meta name="description">` | Page description in **German** |
+| `<meta property="og:type">` | Always `website` |
+| `<meta property="og:url">` | Same absolute URL as canonical |
+| `<meta property="og:title">` | Page title in **German** |
+| `<meta property="og:description">` | Same as meta description |
+| `<meta property="og:site_name">` | `Thomas Schulze IT Solutions` |
+| `<meta property="og:locale">` | Always `de_DE` |
+| `<meta property="og:image">` | `https://thomas-schulze-it-solutions.de/img/social-preview.png` |
+
+> **Language rule:** `<title>`, description, and OG preview text are all German-only. Even though the site has a DE/EN language toggle at runtime, search engines index the static HTML — so head metadata must be authored in the primary (German) language.
+
+#### JSON-LD structured data (`index.html` only)
+
+`index.html` includes a `<script type="application/ld+json">` Person schema in `<head>`. Update it when the job title or contact details change.
+
+#### `robots.txt`
+
+```
+User-agent: *
+Allow: /
+Disallow: /tests/
+
+Sitemap: https://thomas-schulze-it-solutions.de/sitemap.xml
+```
+
+- `/tests/` is disallowed so crawlers do not index the Playwright test configs and spec files (which are committed to the repo and therefore publicly accessible on GitHub Pages).
+- Do **not** remove the `Disallow: /tests/` line.
+
+#### `sitemap.xml`
+
+Lists all six pages (`index.html`, `about.html`, `projects.html`, `contact.html`, `impressum.html`, `datenschutz.html`) with their canonical URLs, change frequencies, and priorities. Update `sitemap.xml` whenever a page is added or removed.
+
+#### Social preview image
+
+`img/social-preview.png` is a 1200×630 px image in the site's dark amber theme. It is used as the OpenGraph `og:image` on every page and displayed when the site is shared on social platforms (LinkedIn, Twitter/X, WhatsApp, etc.). Replace it if the brand or tagline changes significantly.
+
 ---
 
 ## Testing
@@ -213,7 +263,7 @@ npx playwright test e2e/projects.spec.js
 |------|----------------|
 | `unit/i18n.spec.js` | `window.i18n` API: `t()`, `setLanguage()`, all three `data-i18n*` attributes, `localStorage` persistence |
 | `unit/main.spec.js` | Theme toggle, active nav link per page, hamburger menu, contact form `e.preventDefault()` |
-| `e2e/navigation.spec.js` | All 6 pages load without JS errors; nav and footer links; required structural elements |
+| `e2e/navigation.spec.js` | All 6 pages load without JS errors; nav and footer links; required structural elements; canonical URL, OG tags, and SEO title per page |
 | `e2e/theme.spec.js` | Theme toggle flips `data-theme`, persists across navigation and reload |
 | `e2e/language.spec.js` | DE/EN switcher updates text, `<html lang>`, `active` class, `localStorage` |
 | `e2e/projects.spec.js` | Project cards render from JS data; accordion expand/collapse (click + keyboard); DE/EN labels |
@@ -232,6 +282,7 @@ The workflow `.github/workflows/tests.yml` runs all tests automatically on every
 - **New page or new UI component** → add a test to `tests/e2e/navigation.spec.js` and a dedicated `e2e/*.spec.js` if the component has interactive behaviour.
 - **Change to the contact form mechanism** (e.g. switching from mailto: to a backend) → update `tests/e2e/contact.spec.js`.
 - **Any change that affects the claims in `datenschutz.html`** (e.g. adding a new `localStorage` key, loading a third-party font, integrating analytics) → update `tests/e2e/datenschutz.spec.js` first, confirm the test fails with your intended change, then update the privacy policy text and make the test pass again.
+- **SEO changes** (new page, renamed page, updated title) → update `sitemap.xml`, the page `<head>` canonical/OG tags, and the relevant assertions in `tests/e2e/navigation.spec.js`.
 
 ---
 

@@ -8,12 +8,12 @@
 const { test, expect } = require('@playwright/test');
 
 const pages = [
-  { path: '/index.html',       title: /Thomas Schulze/ },
-  { path: '/about.html',       title: /Thomas Schulze/ },
-  { path: '/projects.html',    title: /Thomas Schulze/ },
-  { path: '/contact.html',     title: /Thomas Schulze/ },
-  { path: '/impressum.html',   title: /Thomas Schulze/ },
-  { path: '/datenschutz.html', title: /Thomas Schulze/ },
+  { path: '/index.html',       title: /Thomas Schulze/, canonical: 'https://thomas-schulze-it-solutions.de/' },
+  { path: '/about.html',       title: /Thomas Schulze/, canonical: 'https://thomas-schulze-it-solutions.de/about.html' },
+  { path: '/projects.html',    title: /Thomas Schulze/, canonical: 'https://thomas-schulze-it-solutions.de/projects.html' },
+  { path: '/contact.html',     title: /Thomas Schulze/, canonical: 'https://thomas-schulze-it-solutions.de/contact.html' },
+  { path: '/impressum.html',   title: /Thomas Schulze/, canonical: 'https://thomas-schulze-it-solutions.de/impressum.html' },
+  { path: '/datenschutz.html', title: /Thomas Schulze/, canonical: 'https://thomas-schulze-it-solutions.de/datenschutz.html' },
 ];
 
 test.describe('All pages load without errors', () => {
@@ -115,5 +115,105 @@ test.describe('Page structure', () => {
       img instanceof HTMLImageElement && img.complete && img.naturalWidth > 0
     );
     await expect(isLoaded).toBeTruthy();
+  });
+});
+
+test.describe('SEO meta tags', () => {
+  for (const { path, canonical } of pages) {
+    test(`${path} has a canonical link tag`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('domcontentloaded');
+      const href = await page.locator('link[rel="canonical"]').getAttribute('href');
+      expect(href).toBe(canonical);
+    });
+
+    test(`${path} has og:url meta tag`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('domcontentloaded');
+      const content = await page.locator('meta[property="og:url"]').getAttribute('content');
+      expect(content).toBe(canonical);
+    });
+
+    test(`${path} has og:site_name meta tag`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('domcontentloaded');
+      const content = await page.locator('meta[property="og:site_name"]').getAttribute('content');
+      expect(content).toBe('Thomas Schulze IT Solutions');
+    });
+  }
+
+  test('index.html has updated title for SEO', async ({ page }) => {
+    await page.goto('/index.html');
+    await expect(page).toHaveTitle(/Softwarearchitekt.*\.NET-Freelancer/);
+  });
+
+  test('index.html has og:type=website', async ({ page }) => {
+    await page.goto('/index.html');
+    const content = await page.locator('meta[property="og:type"]').getAttribute('content');
+    expect(content).toBe('website');
+  });
+
+  for (const { path } of pages) {
+    test(`${path} has og:image meta tag`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('domcontentloaded');
+      const content = await page.locator('meta[property="og:image"]').getAttribute('content');
+      expect(content).toContain('social-preview.png');
+    });
+  }
+
+  for (const { path } of pages) {
+    test(`${path} has og:locale set to de_DE`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('domcontentloaded');
+      const content = await page.locator('meta[property="og:locale"]').getAttribute('content');
+      expect(content).toBe('de_DE');
+    });
+  }
+
+  test('index.html has JSON-LD Person structured data', async ({ page }) => {
+    await page.goto('/index.html');
+    await page.waitForLoadState('domcontentloaded');
+    const ldJson = await page.evaluate(() => {
+      const el = document.querySelector('script[type="application/ld+json"]');
+      return el ? JSON.parse(el.textContent) : null;
+    });
+    expect(ldJson).not.toBeNull();
+    expect(ldJson['@type']).toBe('Person');
+    expect(ldJson['name']).toBe('Thomas Schulze');
+    expect(ldJson['url']).toBe('https://thomas-schulze-it-solutions.de/');
+  });
+});
+
+test.describe('SEO crawl files', () => {
+  test('robots.txt is served and contains Disallow: /tests/', async ({ request }) => {
+    const response = await request.get('/robots.txt');
+    expect(response.status()).toBe(200);
+    const body = await response.text();
+    expect(body).toContain('Disallow: /tests/');
+  });
+
+  test('robots.txt references the sitemap URL', async ({ request }) => {
+    const response = await request.get('/robots.txt');
+    expect(response.status()).toBe(200);
+    const body = await response.text();
+    expect(body).toContain('Sitemap: https://thomas-schulze-it-solutions.de/sitemap.xml');
+  });
+
+  test('sitemap.xml is served and lists all six pages', async ({ request }) => {
+    const response = await request.get('/sitemap.xml');
+    expect(response.status()).toBe(200);
+    const body = await response.text();
+    const expectedUrls = [
+      'https://thomas-schulze-it-solutions.de/',
+      'https://thomas-schulze-it-solutions.de/about.html',
+      'https://thomas-schulze-it-solutions.de/projects.html',
+      'https://thomas-schulze-it-solutions.de/contact.html',
+      'https://thomas-schulze-it-solutions.de/impressum.html',
+      'https://thomas-schulze-it-solutions.de/datenschutz.html',
+    ];
+    for (const url of expectedUrls) {
+      expect(body).toContain(url);
+    }
   });
 });
