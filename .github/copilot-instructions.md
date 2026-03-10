@@ -25,13 +25,16 @@ thomas-schulze-it-solutions.contact.io/
 ├── contact.html      # Contact details + mailto: form
 ├── impressum.html    # Legal notice (Impressum) – German-only (legal requirement)
 ├── datenschutz.html  # Privacy policy (Datenschutzerklärung) – German-only (legal document)
+├── robots.txt        # Crawl directives; allows all except /tests/; references sitemap
+├── sitemap.xml       # XML sitemap listing all 6 pages with priorities and change frequencies
 ├── css/
 │   └── style.css     # One shared stylesheet – dark/light theme, CSS variables, responsive
 ├── fonts/
 │   └── arimo-*.woff2 # Self-hosted Arimo font files
 ├── img/
 │   ├── logo.svg      # Full logo
-│   └── logo-icon.svg # Icon-only logo (navbar + favicon)
+│   ├── logo-icon.svg # Icon-only logo (navbar + favicon)
+│   └── social-preview.png # 1200×630 px Open Graph / social sharing preview image
 ├── js/
 │   ├── i18n.js       # DE/EN translations + project data rendering
 │   └── main.js       # Theme toggle, nav highlight, hamburger, contact form
@@ -174,6 +177,21 @@ Each decision below carries agent-actionable rules. Before making changes, ident
 - ✅ When adding any new third-party resource (font, script, CDN), update the compliance tests in `tests/e2e/datenschutz.spec.js` and update `datenschutz.html` to reflect the change before merging.
 - ❌ Never skip or delete a failing test to make a PR pass — fix the underlying issue instead.
 - ❌ Never add `node_modules/`, `playwright-report/`, or `test-results/` to version control (they are in `.gitignore`).
+
+### AD-12: Static SEO assets – German-only head metadata, sitemap, robots
+
+**Decision:** All SEO metadata in `<head>` (title, meta description, OpenGraph tags, JSON-LD) is authored in German only. A `robots.txt` and a `sitemap.xml` are committed at the repository root. All six pages carry `<link rel="canonical">`, `<meta property="og:locale" content="de_DE">`, and `<meta property="og:image">` pointing to `img/social-preview.png`.  
+**Rationale:** The site is a German-language freelance portfolio targeting the German market. Having English head metadata with `og:locale=de_DE` is contradictory and misleading for scrapers. A static sitemap and robots.txt are crawl-time assets that must exist at the domain root; they cannot be generated at runtime by a zero-build-step static site.  
+**Agent rules:**
+- ✅ All six HTML files must carry `<link rel="canonical">`, `og:type`, `og:url`, `og:title`, `og:description`, `og:site_name`, `og:locale`, and `og:image` in `<head>`.
+- ✅ `<title>`, `<meta name="description">`, `og:title`, and `og:description` must be in **German** on all pages (including the legal pages `impressum.html` and `datenschutz.html` which are already German).
+- ✅ `og:locale` is always `de_DE` — the site is German-first and has no multi-locale variant.
+- ✅ When renaming or adding a page, add a `<url>` entry to `sitemap.xml` and update the canonical URL in the new page's `<head>`.
+- ✅ `robots.txt` disallows `/tests/` to prevent crawlers from indexing the test directory. Do not remove this `Disallow` line.
+- ❌ Never change `og:locale` from `de_DE` — the site is intentionally German-only for all metadata.
+- ❌ Never write English text in `<title>`, `<meta name="description">`, `og:title`, or `og:description`, even if the page body has an English toggle — search engines index the static head, not the dynamically translated DOM.
+- ✅ `img/social-preview.png` is a 1200×630 px image used as the OpenGraph preview. Update it if the brand or tagline changes significantly; keep the dark amber site theme.
+- ✅ `index.html` carries a `<script type="application/ld+json">` Person schema. When contact details or job title change, update the JSON-LD block as well.
 
 ---
 
@@ -664,6 +682,10 @@ To change the delivery email: update the `mailto:` address in the `mailtoUrl` st
 | Update the Privacy Policy | `datenschutz.html` |
 | Add a new `localStorage` key | The JS file that sets the key + `tests/unit/` spec + `tests/e2e/datenschutz.spec.js` (`permitted` set) + `datenschutz.html` |
 | Add any third-party resource | The HTML/CSS/JS file + `tests/e2e/datenschutz.spec.js` (compliance checks) + `datenschutz.html` |
+| Update page title / description / OG tags | The relevant `.html` file(s) – keep `<title>`, `og:title`, and `og:description` in German |
+| Add a new page (SEO) | Add a `<url>` entry to `sitemap.xml`; add `<link rel="canonical">` + full OG tags to the new page's `<head>` |
+| Update the social preview image | Replace `img/social-preview.png` (1200×630 px, dark amber theme) |
+| Update JSON-LD structured data | `index.html` – the `<script type="application/ld+json">` Person schema block |
 
 ---
 
@@ -683,6 +705,8 @@ To change the delivery email: update the `mailto:` address in the `mailtoUrl` st
 - Verify WCAG AA contrast ratios when changing any colour token (≥4.5:1 for text, ≥3:1 for UI).
 - Give every new project entry identical `id` values in both `projectsData.en` and `projectsData.de`.
 - Document significant architectural changes in this file (`.github/copilot-instructions.md`).
+- Keep `<title>`, `<meta name="description">`, `og:title`, and `og:description` in **German** on every page — the site is a German-first portfolio.
+- When adding a new page, add a `<url>` entry to `sitemap.xml` and full OG/canonical tags to the new page's `<head>`.
 - **After every code change, check whether `.github/copilot-instructions.md` and `README.md` need to be updated** to reflect the change. If either file contains information that is now out of date, update it in the same commit.
 - **Add or update tests for every change to the site** – see the [Testing](#testing) section and the "What to change and where" table for which spec files to update.
 - Run `cd tests && npx playwright test` locally before opening a PR.
@@ -701,6 +725,7 @@ To change the delivery email: update the `mailto:` address in the `mailtoUrl` st
 - **Don't change accent/primary colour tokens** without verifying WCAG AA contrast in light mode.
 - **Don't skip or delete a failing test to make a PR pass** – fix the underlying issue. If a compliance test fails, either revert the change or update `datenschutz.html` and the test to reflect the new (accurate) policy.
 - **Don't merge a PR without running the Playwright test suite** – CI runs tests automatically, but run them locally first to catch issues early.
+- **Don't write English text in `<title>`, meta description, or OG tags** – all head metadata is German-only, regardless of the runtime language toggle.
 
 ---
 
