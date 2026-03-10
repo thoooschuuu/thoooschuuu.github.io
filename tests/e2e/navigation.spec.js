@@ -185,6 +185,60 @@ test.describe('SEO meta tags', () => {
   });
 });
 
+test.describe('Custom 404 page', () => {
+  test('404.html loads without errors', async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', err => errors.push(err.message));
+
+    await page.goto('/404.html');
+    await page.waitForLoadState('domcontentloaded');
+
+    await expect(page).toHaveTitle(/Thomas Schulze/);
+    expect(errors).toHaveLength(0);
+  });
+
+  test('404.html has nav, main, and footer', async ({ page }) => {
+    await page.goto('/404.html');
+    await expect(page.locator('nav.navbar')).toBeAttached();
+    await expect(page.locator('main')).toBeAttached();
+    await expect(page.locator('footer')).toBeAttached();
+  });
+
+  test('404.html has a link back to home', async ({ page }) => {
+    await page.goto('/404.html');
+    const homeLink = page.locator('main a[href="index.html"]');
+    await expect(homeLink).toBeAttached();
+    await expect(homeLink).toBeVisible();
+  });
+
+  test('404.html shows translated content in German by default', async ({ page }) => {
+    await page.goto('/404.html');
+    await page.waitForLoadState('domcontentloaded');
+    await expect(page.locator('[data-i18n="notfound.title"]')).toHaveText('Seite nicht gefunden');
+  });
+
+  test('404.html switches to English on EN button click', async ({ page }) => {
+    await page.goto('/404.html');
+    await page.waitForLoadState('domcontentloaded');
+    await page.click('.lang-btn[data-lang="en"]');
+    await expect(page.locator('[data-i18n="notfound.title"]')).toHaveText('Page not found');
+  });
+
+  test('404.html has theme and lang controls', async ({ page }) => {
+    await page.goto('/404.html');
+    await expect(page.locator('#themeToggle')).toBeAttached();
+    await expect(page.locator('.lang-btn[data-lang="de"]')).toBeAttached();
+    await expect(page.locator('.lang-btn[data-lang="en"]')).toBeAttached();
+  });
+
+  test('404.html has noindex, nofollow robots directive', async ({ page }) => {
+    await page.goto('/404.html');
+    await page.waitForLoadState('domcontentloaded');
+    const content = await page.locator('meta[name="robots"]').getAttribute('content');
+    expect(content).toBe('noindex, nofollow');
+  });
+});
+
 test.describe('SEO crawl files', () => {
   test('robots.txt is served and contains Disallow: /tests/', async ({ request }) => {
     const response = await request.get('/robots.txt');

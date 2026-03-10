@@ -97,6 +97,12 @@
       'contact.form.success.text':       'Your email client should have opened with a pre-filled message. Please review and send it to reach me directly.',
       'contact.form.error':              'Failed – please try again',
 
+      /* --- 404 page --- */
+      'notfound.label':    'Error 404',
+      'notfound.title':    'Page not found',
+      'notfound.desc':     'The page you are looking for does not exist or has been moved.',
+      'notfound.btn':      '← Back to Home',
+
       /* --- Footer --- */
       'footer.contact':     'Contact',
       'footer.impressum':   'Impressum',
@@ -187,6 +193,12 @@
       'contact.form.success.title':      'E-Mail-Programm geöffnet!',
       'contact.form.success.text':       'Ihr E-Mail-Programm sollte sich mit einer vorausgefüllten Nachricht geöffnet haben. Bitte prüfen und senden Sie diese, um mich direkt zu erreichen.',
       'contact.form.error':              'Fehlgeschlagen – bitte erneut versuchen',
+
+      /* --- 404 page --- */
+      'notfound.label':    'Fehler 404',
+      'notfound.title':    'Seite nicht gefunden',
+      'notfound.desc':     'Die gesuchte Seite existiert nicht oder wurde verschoben.',
+      'notfound.btn':      '← Zurück zur Startseite',
 
       /* --- Footer --- */
       'footer.contact':     'Kontakt',
