@@ -61,6 +61,37 @@ test.describe('Contact page – structure', () => {
   });
 });
 
+test.describe('Contact form – label accessibility', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => localStorage.removeItem('ts_lang'));
+    await page.goto('/contact.html');
+    await page.waitForLoadState('domcontentloaded');
+  });
+
+  test('name label is present and associated with input', async ({ page }) => {
+    await expect(page.getByLabel('Name').first()).toBeAttached();
+  });
+
+  test('email label is present and associated with input', async ({ page }) => {
+    await expect(page.getByLabel('E-Mail')).toBeAttached();
+  });
+
+  test('subject label is present and associated with select', async ({ page }) => {
+    await expect(page.getByLabel('Betreff')).toBeAttached();
+  });
+
+  test('message label is present and associated with textarea', async ({ page }) => {
+    await expect(page.getByLabel('Nachricht')).toBeAttached();
+  });
+
+  test('labels translate to English', async ({ page }) => {
+    await page.evaluate(() => window.i18n.setLanguage('en'));
+    await expect(page.getByLabel('Email')).toBeAttached();
+    await expect(page.getByLabel('Subject')).toBeAttached();
+    await expect(page.getByLabel('Message')).toBeAttached();
+  });
+});
+
 test.describe('Contact page – form submit handler', () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => localStorage.removeItem('ts_lang'));
