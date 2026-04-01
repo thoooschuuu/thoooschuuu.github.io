@@ -66,6 +66,7 @@
       'projects.cta.text':   'Have a project in mind? Let\'s build something great together.',
       'projects.cta.btn':    'Get in Touch →',
       'projects.filter.all': 'All',
+      'projects.filter.toolbar.label': 'Filter by technology',
 
       /* --- Contact page --- */
       'contact.label':                   'Let\'s Talk',
@@ -164,6 +165,7 @@
       'projects.cta.text':   'Haben Sie ein Projekt im Sinn? Lassen Sie uns gemeinsam etwas Großartiges entwickeln.',
       'projects.cta.btn':    'Kontakt aufnehmen →',
       'projects.filter.all': 'Alle',
+      'projects.filter.toolbar.label': 'Nach Technologie filtern',
 
       /* --- Contact page --- */
       'contact.label':                   'Kontakt',
@@ -581,20 +583,29 @@
         '" data-filter="' + escapeHtml(tech) + '" type="button">' + escapeHtml(tech) + '</button>';
     }
 
+    container.setAttribute('aria-label', t['projects.filter.toolbar.label']);
     container.innerHTML = html;
 
     container.onclick = function (e) {
       var btn = e.target.closest('.filter-btn');
       if (!btn) return;
       var filter = btn.getAttribute('data-filter');
-      if (filter === '*') {
-        activeFilter = null;
-      } else if (activeFilter === filter) {
+      if (filter === '*' || activeFilter === filter) {
         activeFilter = null;
       } else {
         activeFilter = filter;
       }
-      renderFilterButtons(lang);
+
+      // Update is-active classes in place so keyboard focus is preserved
+      var buttons = container.querySelectorAll('.filter-btn');
+      for (var i = 0; i < buttons.length; i++) {
+        var b = buttons[i];
+        var bFilter = b.getAttribute('data-filter');
+        var isActive =
+          (activeFilter === null && bFilter === '*') ||
+          (activeFilter !== null && bFilter === activeFilter);
+        b.classList.toggle('is-active', isActive);
+      }
       applyFilter();
     };
   }
