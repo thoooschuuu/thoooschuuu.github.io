@@ -29,7 +29,7 @@ Ask the user:
 - With issue: `feature/123-short-description`
 - Without issue: `feature/short-description`
 
-Show the constructed name and ask the user to confirm before creating.
+Show the constructed name.
 
 ### 5. Create and switch to the branch
 
