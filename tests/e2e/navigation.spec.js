@@ -231,6 +231,18 @@ test.describe('Custom 404 page', () => {
     await expect(page.locator('.lang-btn[data-lang="en"]')).toBeAttached();
   });
 
+  test('404.html navbar brand uses relative href (not absolute URL)', async ({ page }) => {
+    await page.goto('/404.html');
+    const href = await page.locator('.navbar-brand').getAttribute('href');
+    expect(href).toBe('index.html');
+  });
+
+  test('404.html navbar brand navigates to index.html', async ({ page }) => {
+    await page.goto('/404.html');
+    await page.click('.navbar-brand');
+    await expect(page).toHaveURL(/index\.html|\/$/);
+  });
+
   test('404.html has noindex, nofollow robots directive', async ({ page }) => {
     await page.goto('/404.html');
     await page.waitForLoadState('domcontentloaded');
