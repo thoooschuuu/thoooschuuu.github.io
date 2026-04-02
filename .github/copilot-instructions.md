@@ -324,7 +324,7 @@ Every page follows this skeleton exactly. Copy it when creating a new page:
   </main>
 
   <footer>
-    <p>&copy; 2024 Thomas Schulze IT Solutions &middot; <a href="contact.html" data-i18n="footer.contact">Contact</a> &middot; <a href="impressum.html" data-i18n="footer.impressum">Impressum</a> &middot; <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></p>
+    <p>&copy; 2026 Thomas Schulze IT Solutions &middot; <a href="contact.html" data-i18n="footer.contact">Contact</a> &middot; <a href="impressum.html" data-i18n="footer.impressum">Impressum</a> &middot; <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></p>
     <div class="footer-controls">
       <div class="lang-toggle" aria-label="Language switcher">
         <button class="lang-btn" data-lang="de">DE</button>
