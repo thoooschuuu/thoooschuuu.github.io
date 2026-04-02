@@ -16,7 +16,7 @@ module.exports = defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
-  reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
+  reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'line',
 
   use: {
     baseURL: 'http://localhost:3000',
@@ -40,5 +40,7 @@ module.exports = defineConfig({
     cwd: '..',
     port: 3000,
     reuseExistingServer: !process.env.CI,
+    stdout: 'ignore',
+    stderr: 'ignore',
   },
 });

@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd tests && npx playwright test",
+            "command": "cd tests && npx playwright test --reporter=dot",
             "timeout": 120,
             "statusMessage": "Running Playwright tests..."
           }
